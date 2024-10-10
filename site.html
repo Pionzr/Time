@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #282c34;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .countdown {
+            display: flex;
+            justify-content: space-around;
+            font-size: 1.5rem;
+        }
+        .countdown div {
+            margin: 0 10px;
+        }
+        .countdown span {
+            display: block;
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contagem Regressiva para encontrar meu amor</h1>
+        <div class="countdown">
+            <div>
+                <span id="days">0</span>
+                Dias
+            </div>
+            <div>
+                <span id="hours">0</span>
+                Horas
+            </div>
+            <div>
+                <span id="minutes">0</span>
+                Minutos
+            </div>
+            <div>
+                <span id="seconds">0</span>
+                Segundos
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const countdown = () => {
+            const countDate = new Date('February 7, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            const days = Math.floor(gap / day);
+            const hours = Math.floor((gap % day) / hour);
+            const minutes = Math.floor((gap % hour) / minute);
+            const seconds = Math.floor((gap % minute) / second);
+
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        };
+
+        setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
